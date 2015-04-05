@@ -13,3 +13,11 @@ parameters:
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
+
+    database_host: localhost
+    database_user: root
+    database_pass: ~
+    database_name: "ezpublish_pipeline"
+    database_port: 3306
+
+    yuzu_pipeline.root_location: 59
