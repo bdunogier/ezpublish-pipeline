@@ -1,0 +1,84 @@
+doctrine:
+    dbal:
+        connections:
+            default:
+                driver: pdo_mysql
+                host: 127.0.0.1
+                port: 3306
+                dbname: ezpublish_pipeline
+                user: root
+                password: null
+                charset: UTF8
+                options: {  }
+
+ezpublish:
+    repositories:
+        pipeline_repository:
+            engine: legacy
+            connection: default
+
+    siteaccess:
+        # Available siteaccesses
+        list:
+            - pipeline_site
+            - pipeline_site_admin
+
+        # Siteaccess groups. Use them to group common settings.
+        groups:
+            pipeline_frontend_group:
+                - pipeline_site
+            pipeline_group:
+                - pipeline_site
+                - pipeline_site_admin
+
+        default_siteaccess: pipeline_site
+        match:
+            URIElement: 1
+
+    imagemagick:
+        enabled: false
+
+    # System settings, grouped by siteaccess and/or siteaccess group
+    system:
+        pipeline_site:
+            content:
+                tree_root:
+                      # Root locationId of the object Pipeline Theme for eZ Publish [Pipeline Theme]
+                      location_id: 59
+
+        pipeline_site_admin:
+            legacy_mode: true
+            session:
+                name: eZBOSESSID
+
+        pipeline_group:
+            repository: pipeline_repository
+            var_dir: var/pipeline_site
+            languages: [eng-GB]
+            session:
+                name: eZSESSID
+        default:
+            content:
+                view_cache: true
+                ttl_cache: true
+                # TTL cache (http) in seconds
+                # Note that Http cache for a given content is always invalidated when publishing that content
+                default_ttl: 300
+
+ez_publish_legacy:
+    enabled: true
+    root_dir: %kernel.root_dir%/../ezpublish_legacy
+
+# Stash is used for persistence cache
+stash:
+    caches:
+        default:
+            drivers:
+                # When using multiple webservers, you must use Memcache or Redis
+                - FileSystem
+            inMemory: true
+            registerDoctrineAdapter: false
+            # On Windows, using FileSystem, to avoid hitting filesystem limitations
+            # you need to change the keyHashFunction used to generate cache directories to "crc32"
+            # FileSystem
+            #    keyHashFunction: crc32
