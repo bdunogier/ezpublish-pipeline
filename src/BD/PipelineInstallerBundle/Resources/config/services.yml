@@ -1,0 +1,17 @@
+services:
+    ezplatform.installer.db_based_installer:
+        abstract: true
+        class:  EzSystems\PlatformInstallerBundle\Installer\DbBasedInstaller
+        arguments: [@database_connection]
+
+    bd_pipeline_installer.pipeline_installer:
+        parent: ezplatform.installer.db_based_installer
+        class: BD\PipelineInstallerBundle\Installer\PipelineInstaller
+        tags:
+            - {name: ezplatform.installer, type: pipeline}
+
+    bd_pipeline_installer.pipeline_clean_installer:
+        parent: ezplatform.installer.db_based_installer
+        class: BD\PipelineInstallerBundle\Installer\PipelineCleanInstaller
+        tags:
+            - {name: ezplatform.installer, type: pipeline-clean}

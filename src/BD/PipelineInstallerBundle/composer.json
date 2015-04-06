@@ -1,0 +1,12 @@
+{
+    "name": "bdunogier/pipeline-installer-bundle",
+    "authors": [
+        {
+            "name": "Bertrand Dunogier",
+            "email": "bd@ez.no"
+        }
+    ],
+    "require": {
+        "bdunogier/pipeline-bundle-data": "*"
+    }  
+}

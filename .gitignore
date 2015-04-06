@@ -27,3 +27,4 @@ composer.lock
 .project
 .settings/
 
+src/BD/PipelineBundleData/
