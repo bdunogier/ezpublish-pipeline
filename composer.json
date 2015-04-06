@@ -10,7 +10,10 @@
         }
     ],
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0": { "": "src/" },
+        "psr-4": {
+            "EzSystems\\PlatformInstallerBundle\\": "vendor/ezsystems/platform-installer-bundle/src/"
+        }
     },
     "require": {
         "php": ">=5.3.17",

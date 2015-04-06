@@ -72,7 +72,9 @@ class EzPublishKernel extends Kernel
             new WhiteOctoberBreadcrumbsBundle(),
             new NelmioCorsBundle(),
             new OneupFlysystemBundle(),
-            new Yuzu\PipelineBundle\YuzuPipelineBundle()
+            new Yuzu\PipelineBundle\YuzuPipelineBundle(),
+            new BD\PipelineInstallerBundle\BDPipelineInstallerBundle(),
+            new EzSystems\PlatformInstallerBundle\EzSystemsPlatformInstallerBundle()
         );
 
         switch ( $this->getEnvironment() )
